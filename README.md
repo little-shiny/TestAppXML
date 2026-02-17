@@ -78,7 +78,7 @@ mvn clean package
 
 ## 🛠️ Tecnologías utilizadas
 
-* **Java 23** (Compatible con Java 17+).
+* **Java 23** (Compatible con Java 17+)
 * **JavaFX 17**: Para la interfaz gráfica de usuario.
 * **Maven**: Gestión de dependencias y construcción del proyecto.
 * **DOM (javax.xml)**: Para el procesamiento de los archivos de preguntas.
