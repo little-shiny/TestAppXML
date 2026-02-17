@@ -1,4 +1,4 @@
-package com.testpsp;
+package com.testapp;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

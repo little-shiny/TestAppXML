@@ -1,4 +1,4 @@
-module com.testpsp {
+module com.testapp {
     requires javafx.controls;
     requires javafx.fxml;
 
@@ -6,6 +6,6 @@ module com.testpsp {
     requires com.dlsc.formsfx;
     requires java.xml;
 
-    opens com.testpsp to javafx.fxml;
-    exports com.testpsp;
+    opens com.testapp to javafx.fxml;
+    exports com.testapp;
 }

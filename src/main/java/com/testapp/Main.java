@@ -1,4 +1,4 @@
-package com.testpsp;
+package com.testapp;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

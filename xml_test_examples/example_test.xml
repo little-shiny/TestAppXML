@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preguntas>
+    <pregunta tema="1" multiple="false">
+        <enunciado>¿Cuál es la capital de Francia?</enunciado>
+        <opcion>Madrid</opcion>
+        <opcion>París</opcion>
+        <opcion>Londres</opcion>
+        <opcion>Berlín</opcion>
+        <respuesta>1</respuesta>
+    </pregunta>
+
+    <pregunta tema="2" multiple="true">
+        <enunciado>¿Qué lenguajes son orientados a objetos?</enunciado>
+        <opcion>Java</opcion>
+        <opcion>C</opcion>
+        <opcion>Python</opcion>
+        <opcion>Ensamblador</opcion>
+        <respuesta>0</respuesta>
+        <respuesta>2</respuesta>
+    </pregunta>
+</preguntas>
