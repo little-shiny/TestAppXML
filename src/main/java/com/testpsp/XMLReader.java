@@ -12,13 +12,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@SuppressWarnings("ALL")
 public class XMLReader {
     public static List<Tema> cargarTemasDesdeXML(){
-        Map<String, Tema> mapaTemas = new HashMap();
+        Map<String, Tema> mapaTemas = new HashMap<>();
 
         try{
             DocumentBuilderFactory  factory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder builder = factory.newDocumentBuilder();;
+            DocumentBuilder builder = factory.newDocumentBuilder();
             Document doc = builder.parse(new File("preguntas.xml"));
 
             NodeList listaPreguntas = doc.getElementsByTagName("pregunta");
@@ -41,7 +42,7 @@ public class XMLReader {
                     opciones.add(opcionesXML.item(j).getTextContent());
                 }
 
-                NodeList respuestasXML = doc.getElementsByTagName("respuesta");
+                NodeList respuestasXML = pElement.getElementsByTagName("respuesta");
                 List<Integer> respuestasCorrectas = new ArrayList<>();
 
                 for (int j = 0; j < respuestasXML.getLength(); j++){

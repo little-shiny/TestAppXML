@@ -5,15 +5,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
-import org.w3c.dom.*;
-import javax.xml.parsers.*;
-import java.io.File;
 import java.util.*;
 
 public class Main extends Application {
 
-    private Map<String, List<Question>> temas = new HashMap<>();
+    private List<Tema> temas = new ArrayList<>();
     private List<Question> preguntas = new ArrayList<>();
     private List<Question> preguntasFalladas = new ArrayList<>();
     private Map<Question, List<Integer>> respuestasUsuario = new HashMap<>();
@@ -35,8 +31,7 @@ public class Main extends Application {
     public void start(Stage stage) {
         this.primaryStage = stage;
 
-        // Cargar preguntas desde XML
-        cargarPreguntasDesdeXML("preguntas.xml");
+        temas = XMLReader.cargarTemasDesdeXML();
 
         // Mostrar pantalla de selección de tema
         mostrarSeleccionTema();
@@ -52,11 +47,13 @@ public class Main extends Application {
         Label lbl = new Label("Seleccione un tema para estudiar:");
         root.getChildren().add(lbl);
 
-        for (String tema : temas.keySet()) {
-            Button btn = new Button(tema);
-            btn.setOnAction(e -> iniciarTema(tema));
-            root.getChildren().add(btn);
-        }
+        temas.stream()
+                .sorted(Comparator.comparing(Tema::getId))
+                .forEach(tema -> {
+                    Button btn = new Button("Tema " + tema.getId());
+                    btn.setOnAction(e -> iniciarTema(tema));
+                    root.getChildren().add(btn);
+                });
 
         Scene scene = new Scene(root, 400, 300);
         primaryStage.setTitle("Seleccionar Tema - Test Servicios");
@@ -64,8 +61,9 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    private void iniciarTema(String temaSeleccionado) {
-        preguntas = new ArrayList<>(temas.get(temaSeleccionado));
+    private void iniciarTema(Tema temaSeleccionado) {
+        preguntas = new ArrayList<>(temaSeleccionado.getPreguntas());
+
         Collections.shuffle(preguntas); // Mezclar automáticamente
         indiceActual = 0;
         puntuacion = 0;
@@ -74,60 +72,6 @@ public class Main extends Application {
         btnRepasar.setDisable(true);
 
         mostrarPregunta();
-    }
-
-    // =========================
-    // CARGAR PREGUNTAS DESDE XML
-    // =========================
-    private void cargarPreguntasDesdeXML(String archivo) {
-        temas.put("Tema 1 - Procesos y Planificación", new ArrayList<>());
-        temas.put("Tema 2 - Hilos y Java Concurrency", new ArrayList<>());
-        temas.put("Tema 3 - Redes y TCP/IP", new ArrayList<>());
-
-        try {
-            File fXmlFile = new File(archivo);
-            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            Document doc = dBuilder.parse(fXmlFile);
-            doc.getDocumentElement().normalize();
-
-            NodeList nList = doc.getElementsByTagName("pregunta");
-
-            for (int temp = 0; temp < nList.getLength(); temp++) {
-                Node nNode = nList.item(temp);
-                if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-                    Element eElement = (Element) nNode;
-
-                    int temaNum = Integer.parseInt(eElement.getAttribute("tema"));
-                    boolean multiple = Boolean.parseBoolean(eElement.getAttribute("multiple"));
-                    String enunciado = eElement.getElementsByTagName("enunciado").item(0).getTextContent();
-
-                    List<String> opciones = new ArrayList<>();
-                    NodeList opcionesNodes = eElement.getElementsByTagName("opcion");
-                    for (int i = 0; i < opcionesNodes.getLength(); i++) {
-                        opciones.add(opcionesNodes.item(i).getTextContent());
-                    }
-
-                    List<Integer> respuestasCorrectas = new ArrayList<>();
-                    NodeList respuestasNodes = eElement.getElementsByTagName("respuesta");
-                    for (int i = 0; i < respuestasNodes.getLength(); i++) {
-                        respuestasCorrectas.add(Integer.parseInt(respuestasNodes.item(i).getTextContent()));
-                    }
-
-                    Question q = new Question(enunciado, opciones, respuestasCorrectas, multiple);
-
-                    switch (temaNum) {
-                        case 1 -> temas.get("Tema 1 - Procesos y Planificación").add(q);
-                        case 2 -> temas.get("Tema 2 - Hilos y Java Concurrency").add(q);
-                        case 3 -> temas.get("Tema 3 - Redes y TCP/IP").add(q);
-                    }
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Error al cargar el archivo XML:\n" + e.getMessage());
-            alert.showAndWait();
-        }
     }
 
     // =========================
