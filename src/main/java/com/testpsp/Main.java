@@ -4,7 +4,9 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser; // Importante para elegir archivos
 import javafx.stage.Stage;
+import java.io.File;
 import java.util.*;
 
 public class Main extends Application {
@@ -22,7 +24,6 @@ public class Main extends Application {
 
     private Button btnSiguiente = new Button("Siguiente");
     private Button btnRepasar = new Button("Repasar fallos");
-
     private Button btnMenu = new Button("Volver al menú");
 
     private Stage primaryStage;
@@ -30,11 +31,70 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
         this.primaryStage = stage;
+        mostrarPantallaInicial();
+    }
 
-        temas = XMLReader.cargarTemasDesdeXML();
+    // =========================
+    // PANTALLA DE CARGA DE ARCHIVO
+    // =========================
+    private void mostrarPantallaInicial() {
+        VBox root = new VBox(20);
+        root.setStyle("-fx-padding: 30; -fx-alignment: center;");
 
-        // Mostrar pantalla de selección de tema
-        mostrarSeleccionTema();
+        Label lbl = new Label("Bienvenido al Test de Servicios");
+        lbl.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
+
+        Button btnCargar = new Button("Seleccionar Archivo XML de Preguntas");
+        btnCargar.setStyle("-fx-padding: 10 20;");
+
+        btnCargar.setOnAction(e -> seleccionarYCargarXML());
+
+        root.getChildren().addAll(lbl, btnCargar);
+
+        Scene scene = new Scene(root, 400, 200);
+        primaryStage.setTitle("Cargar Test - JavaFX");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    private void seleccionarYCargarXML() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Abrir archivo de preguntas XML");
+
+        // Definición de ruta por defecto
+        File rutaDefault = new File(System.getProperty("user.dir"));
+
+        // Se verifica que la ruta existe
+        if(rutaDefault.exists()){
+            fileChooser.setInitialDirectory(rutaDefault);
+        }
+
+        // Filtro para que solo se vean archivos XML
+        fileChooser.getExtensionFilters().add(
+                new FileChooser.ExtensionFilter("Archivos XML", "*.xml")
+        );
+
+        File seleccionado = fileChooser.showOpenDialog(primaryStage);
+
+        if (seleccionado != null) {
+            try {
+                temas = XMLReader.cargarTemasDesdeXML(seleccionado);
+
+                if (temas.isEmpty()) {
+                    mostrarError("El archivo no contiene temas válidos.");
+                } else {
+                    mostrarSeleccionTema();
+                }
+            } catch (Exception ex) {
+                mostrarError("Error al leer el archivo XML: " + ex.getMessage());
+            }
+        }
+    }
+
+    private void mostrarError(String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
     }
 
     // =========================
@@ -47,20 +107,25 @@ public class Main extends Application {
         Label lbl = new Label("Seleccione un tema para estudiar:");
         root.getChildren().add(lbl);
 
+        // Botón para cambiar de archivo si el usuario se equivoca
+        Button btnCambiarArchivo = new Button("<- Cambiar de archivo XML");
+        btnCambiarArchivo.setOnAction(e -> mostrarPantallaInicial());
+        root.getChildren().add(btnCambiarArchivo);
+        root.getChildren().add(new Separator());
+
         temas.stream()
                 .sorted(Comparator.comparing(Tema::getId))
                 .forEach(tema -> {
                     Button btn = new Button("Tema " + tema.getId());
+                    btn.setMaxWidth(Double.MAX_VALUE); // Botones anchos
                     btn.setOnAction(e -> iniciarTema(tema));
                     root.getChildren().add(btn);
                 });
 
-        Scene scene = new Scene(root, 400, 300);
+        Scene scene = new Scene(root, 400, 400);
         primaryStage.setTitle("Seleccionar Tema - Test Servicios");
         primaryStage.setScene(scene);
-        primaryStage.show();
     }
-
     private void iniciarTema(Tema temaSeleccionado) {
         preguntas = new ArrayList<>(temaSeleccionado.getPreguntas());
 

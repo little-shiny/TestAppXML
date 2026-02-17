@@ -14,17 +14,21 @@ import java.util.Map;
 
 @SuppressWarnings("ALL")
 public class XMLReader {
-    public static List<Tema> cargarTemasDesdeXML(){
+
+    // Ahora el método recibe un objeto File por parámetro
+    public static List<Tema> cargarTemasDesdeXML(File archivo) {
         Map<String, Tema> mapaTemas = new HashMap<>();
 
-        try{
-            DocumentBuilderFactory  factory = DocumentBuilderFactory.newInstance();
+        try {
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
-            Document doc = builder.parse(new File("preguntas.xml"));
+
+            // Usamos el archivo que nos pasan desde el selector
+            Document doc = builder.parse(archivo);
 
             NodeList listaPreguntas = doc.getElementsByTagName("pregunta");
 
-            for(int i = 0; i < listaPreguntas.getLength(); i++){
+            for (int i = 0; i < listaPreguntas.getLength(); i++) {
                 Element pElement = (Element) listaPreguntas.item(i);
 
                 String temaId = pElement.getAttribute("tema");
@@ -38,14 +42,14 @@ public class XMLReader {
                 NodeList opcionesXML = pElement.getElementsByTagName("opcion");
                 List<String> opciones = new ArrayList<>();
 
-                for (int j = 0; j < opcionesXML.getLength(); j++){
+                for (int j = 0; j < opcionesXML.getLength(); j++) {
                     opciones.add(opcionesXML.item(j).getTextContent());
                 }
 
                 NodeList respuestasXML = pElement.getElementsByTagName("respuesta");
                 List<Integer> respuestasCorrectas = new ArrayList<>();
 
-                for (int j = 0; j < respuestasXML.getLength(); j++){
+                for (int j = 0; j < respuestasXML.getLength(); j++) {
                     respuestasCorrectas.add(
                             Integer.parseInt(respuestasXML.item(j).getTextContent())
                     );
@@ -63,7 +67,7 @@ public class XMLReader {
                 mapaTemas.get(temaId).addPregunta(pregunta);
             }
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
