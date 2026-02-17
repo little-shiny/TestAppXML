@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preguntas>
+    <pregunta tema="1" multiple="false">
+        <enunciado>¿Qué sucede cuando un proceso consume su quantum de CPU?</enunciado>
+        <opcion>El proceso es pausado y enviado al final de la cola de procesos activos.</opcion>
+        <opcion>El proceso sigue ejecutándose hasta que termine todas sus instrucciones.</opcion>
+        <opcion>El proceso se elimina del sistema hasta su siguiente ejecución.</opcion>
+        <opcion>El proceso se bloquea hasta que vuelva a recibir datos.</opcion>
+        <respuesta>0</respuesta>
+    </pregunta>
+
+    <pregunta tema="1" multiple="false">
+        <enunciado>¿Cuáles son las propiedades ACID de una transacción?</enunciado>
+        <opcion>Atomicidad, Congruencia, Aislamiento, Durabilidad.</opcion>
+        <opcion>Accesibilidad, Confidencialidad, Integridad, Durabilidad.</opcion>
+        <opcion>Atomicidad, Consistencia, Aislamiento, Disponibilidad.</opcion>
+        <opcion>Autenticidad, Confianza, Integridad, Durabilidad.</opcion>
+        <respuesta>0</respuesta>
+    </pregunta>
+
+    <pregunta tema="1" multiple="false">
+        <enunciado>¿Qué proporciona una máquina paralela virtual?</enunciado>
+        <opcion>Aumenta la complejidad de la programación paralela.</opcion>
+        <opcion>Simplifica la comunicación de objetos distribuidos.</opcion>
+        <opcion>Facilita la implementación de RPC.</opcion>
+        <opcion>Permite ver el conjunto de nodos disponibles como una máquina virtual paralela.</opcion>
+        <respuesta>3</respuesta>
+    </pregunta>
+
+    <pregunta tema="1" multiple="false">
+        <enunciado>¿Qué implica la planificación de procesos en un sistema con múltiples núcleos?</enunciado>
+        <opcion>Los procesos se ejecutan en paralelo sin conflictos.</opcion>
+        <opcion>Solo se puede ejecutar un proceso a la vez.</opcion>
+        <opcion>Los tiempos de ejecución de cada núcleo se repartirán entre los distintos procesos en ejecución.</opcion>
+        <opcion>Los núcleos siempre ejecutan el mismo proceso.</opcion>
+        <respuesta>2</respuesta>
+    </pregunta>
+
+    <pregunta tema="1" multiple="false">
+        <enunciado>¿Cuál de las siguientes clasificaciones de interacción asegura que, mientras un proceso accede a un recurso, ningún otro proceso puede acceder al mismo recurso?</enunciado>
+        <opcion>Sincronización condicional</opcion>
+        <opcion>Cooperación</opcion>
+        <opcion>Sincronización</opcion>
+        <opcion>Exclusión mutua</opcion>
+        <respuesta>3</respuesta>
+    </pregunta>
+
+    <pregunta tema="1" multiple="false">
+        <enunciado>Un proceso se encuentra en estado suspendido cuando:</enunciado>
+        <opcion>Está esperando a volver a ser asignado a la CPU.</opcion>
+        <opcion>Se encuentra en su turno de ejecución.</opcion>
+        <opcion>Está esperando que finalice una operación de E/S.</opcion>
+        <opcion>Ha sido llevado al área de intercambio para liberar un poco la memoria principal del sistema.</opcion>
+        <respuesta>3</respuesta>
+    </pregunta>
+
+    <pregunta tema="1" multiple="false">
+        <enunciado>¿Cuál es el principal problema que se plantea al acceder a un recurso compartido por varios procesos?</enunciado>
+        <opcion>Reducción de errores de programación</opcion>
+        <opcion>Mejor rendimiento del sistema</opcion>
+        <opcion>Inconsistencias en la actualización del valor compartido</opcion>
+        <opcion>Facilidad de acceso a recursos</opcion>
+        <respuesta>2</respuesta>
+    </pregunta>
+
+    <pregunta tema="1" multiple="true">
+        <enunciado>Las herramientas para la gestión de procesos nos permiten:</enunciado>
+        <opcion>Modificar los PID de los procesos activos.</opcion>
+        <opcion>Modificar la información de uso del sistema mostrada.</opcion>
+        <opcion>Cambiar la prioridad de ejecución de un proceso.</opcion>
+        <opcion>Finalizar procesos.</opcion>
+        <respuesta>2</respuesta>
+        <respuesta>3</respuesta>
+    </pregunta>
+
+    <pregunta tema="1" multiple="false">
+        <enunciado>¿Qué tipo de sistema MIMD se caracteriza por tener memoria compartida entre sus procesadores?</enunciado>
+        <opcion>Sistemas MIMD con memoria distribuida.</opcion>
+        <opcion>Sistemas de multiprocesamiento simétrico (SMP).</opcion>
+        <opcion>Clusters.</opcion>
+        <opcion>Grids.</opcion>
+        <respuesta>1</respuesta>
+    </pregunta>
+
+    <pregunta tema="1" multiple="false">
+        <enunciado>¿Qué situación se produce cuando dos o más procesos quedan bloqueados mutuamente, impidiendo que cada uno obtenga los recursos que necesita para continuar su tarea?</enunciado>
+        <opcion>Desincronización</opcion>
+        <opcion>Deadlock o interbloqueo</opcion>
+        <opcion>Inhibición</opcion>
+        <opcion>Condición de carrera</opcion>
+        <respuesta>1</respuesta>
+    </pregunta>
+
+    <pregunta tema="2" multiple="false">
+        <enunciado>¿Cuál es el nombre del algoritmo de planificación de hilos utilizado en Java basado en un sistema de prioridades relativas?</enunciado>
+        <opcion>FIFO</opcion>
+        <opcion>Fixed Priority Scheduling</opcion>
+        <opcion>Round-robin</opcion>
+        <respuesta>1</respuesta>
+    </pregunta>
+
+    <pregunta tema="2" multiple="false">
+        <enunciado>¿Qué ocurre si un hilo llama al método acquire() y no hay permisos disponibles en un objeto Semaphore?</enunciado>
+        <opcion>El hilo continúa su ejecución sin restricciones.</opcion>
+        <opcion>El hilo se bloquea hasta que se libere un permiso.</opcion>
+        <opcion>El hilo incrementa el contador de permisos de Semaphore.</opcion>
+        <opcion>El hilo interrumpe a otro hilo para liberar el permiso.</opcion>
+        <respuesta>1</respuesta>
+    </pregunta>
+
+    <pregunta tema="2" multiple="false">
+        <enunciado>¿Qué permite la programación multihilo o multithreading en un programa?</enunciado>
+        <opcion>Dividir los recursos del sistema entre varios programas diferentes.</opcion>
+        <opcion>Dividir un programa en varios hilos de ejecución independientes.</opcion>
+        <opcion>Mejorar automáticamente la velocidad de un programa.</opcion>
+        <opcion>Ejecutar todos los hilos de manera secuencial.</opcion>
+        <respuesta>1</respuesta>
+    </pregunta>
+
+    <pregunta tema="2" multiple="false">
+        <enunciado>¿Cuál es la función del método sleep() en el ciclo de vida de un hilo?</enunciado>
+        <opcion>Hace que el hilo duerma un tiempo específico, después del cual vuelve a estar "Ejecutable".</opcion>
+        <opcion>Detiene el hilo permanentemente.</opcion>
+        <opcion>Inicia un hilo que está en el estado "Nuevo".</opcion>
+        <opcion>Termina el hilo después de un tiempo específico.</opcion>
+        <respuesta>0</respuesta>
+    </pregunta>
+
+    <pregunta tema="2" multiple="false">
+        <enunciado>¿Cuál es el método utilizado para modificar la prioridad de un hilo en Java?</enunciado>
+        <opcion>changePriority()</opcion>
+        <opcion>getPriority()</opcion>
+        <opcion>setPriority()</opcion>
+        <respuesta>2</respuesta>
+    </pregunta>
+
+    <pregunta tema="2" multiple="false">
+        <enunciado>¿Qué ventaja ofrece la interfaz BlockingQueue sobre Queue en aplicaciones multihilo?</enunciado>
+        <opcion>Permite reiniciar la cola automáticamente tras cada procesamiento.</opcion>
+        <opcion>Ofrece operaciones adicionales de inserción en colas sin bloqueo.</opcion>
+        <opcion>Permite que los hilos esperen hasta que haya elementos disponibles para procesar, asegurando seguridad en el acceso multihilo.</opcion>
+        <opcion>Evita que cualquier hilo acceda a los datos hasta que finalicen todos los procesos concurrentes.</opcion>
+        <respuesta>2</respuesta>
+    </pregunta>
+
+    <pregunta tema="2" multiple="false">
+        <enunciado>¿Qué paquete en Java contiene las clases e interfaces básicas para la manipulación de hilos?</enunciado>
+        <opcion>java.util</opcion>
+        <opcion>java.lang</opcion>
+        <opcion>java.concurrent</opcion>
+        <opcion>java.io</opcion>
+        <respuesta>1</respuesta>
+    </pregunta>
+
+    <pregunta tema="2" multiple="false">
+        <enunciado>¿Qué hace el método shutdown() en un objeto ExecutorService?</enunciado>
+        <opcion>Detiene la aceptación de nuevas tareas y permite que los hilos terminen sus tareas actuales antes de cerrarse.</opcion>
+        <opcion>Termina inmediatamente todas las tareas en ejecución.</opcion>
+        <opcion>Reinicia el pool de hilos y acepta nuevas tareas.</opcion>
+        <opcion>Elimina las tareas pendientes y detiene el pool de hilos.</opcion>
+        <respuesta>0</respuesta>
+    </pregunta>
+
+    <pregunta tema="2" multiple="false">
+        <enunciado>¿Cuándo es útil utilizar el constructor Semaphore(int permisos, boolean justo)?</enunciado>
+        <opcion>Cuando deseamos que sólo un hilo acceda al recurso sin necesidad de permisos.</opcion>
+        <opcion>Cuando queremos que el semáforo permita el acceso ilimitado a los recursos.</opcion>
+        <opcion>Cuando queremos garantizar el orden de adquisición de permisos por los hilos.</opcion>
+        <opcion>Cuando necesitamos desestimar el orden de acceso de los hilos.</opcion>
+        <respuesta>2</respuesta>
+    </pregunta>
+
+    <pregunta tema="2" multiple="false">
+        <enunciado>¿Cuál de los siguientes métodos debe implementar una clase que gestiona excepciones en hilos mediante UncaughtExceptionHandler?</enunciado>
+        <opcion>uncaughtException(Thread t, Throwable e)</opcion>
+        <opcion>catchException(Thread t, Throwable e)</opcion>
+        <opcion>handleException(Thread t, Throwable e)</opcion>
+        <opcion>exceptionCaught (Thread t, Throwable e)</opcion>
+        <respuesta>0</respuesta>
+    </pregunta>
+
+    <pregunta tema="3" multiple="false">
+        <enunciado>Indica la capa se encarga de realizar el direccionamiento lógico (IP).</enunciado>
+        <opcion>Capa de red.</opcion>
+        <opcion>Capa de aplicación.</opcion>
+        <opcion>Capa de transporte.</opcion>
+        <opcion>Capa host-red.</opcion>
+        <respuesta>0</respuesta>
+    </pregunta>
+
+    <pregunta tema="3" multiple="false">
+        <enunciado>Indica que protocolo no pertenece a la capa de aplicación.</enunciado>
+        <opcion>SSH.</opcion>
+        <opcion>HTTP.</opcion>
+        <opcion>ARP.</opcion>
+        <opcion>FTP.</opcion>
+        <respuesta>2</respuesta>
+    </pregunta>
+
+    <pregunta tema="3" multiple="true">
+        <enunciado>En un emisor UDP se utiliza la función</enunciado>
+        <opcion>DatagramSocket.</opcion>
+        <opcion>DataInputStream.</opcion>
+        <opcion>DatagramPacket.</opcion>
+        <opcion>Socket.</opcion>
+        <respuesta>0</respuesta>
+        <respuesta>2</respuesta>
+    </pregunta>
+
+    <pregunta tema="3" multiple="false">
+        <enunciado>Indica la información que no se envía en un paquete o datagrama UDP.</enunciado>
+        <opcion>Dirección destino.</opcion>
+        <opcion>Mensaje y longitud del mensaje.</opcion>
+        <opcion>Puerto destino.</opcion>
+        <opcion>Puerto origen.</opcion>
+        <respuesta>3</respuesta>
+    </pregunta>
+
+    <pregunta tema="3" multiple="false">
+        <enunciado>¿Qué rango de puertos se encuentra reservado y no podemos utilizar en nuestras aplicaciones?</enunciado>
+        <opcion>0-1023.</opcion>
+        <opcion>49152-65536.</opcion>
+        <opcion>1024-49151.</opcion>
+        <respuesta>0</respuesta>
+    </pregunta>
+
+    <pregunta tema="3" multiple="false">
+        <enunciado>Indica en la variable que se puede utilizar la función writeUTF() perteneciente a los streams de datos.</enunciado>
+        <opcion>DataInputStream flujo.</opcion>
+        <opcion>DataOutpuStream flujo.</opcion>
+        <respuesta>1</respuesta>
+    </pregunta>
+
+    <pregunta tema="3" multiple="false">
+        <enunciado>Indica la capa que no pertenece al modelo TCP/IP.</enunciado>
+        <opcion>Capa de red.</opcion>
+        <opcion>Capa host-red.</opcion>
+        <opcion>Capa de aplicación.</opcion>
+        <opcion>Capa de presentación.</opcion>
+        <respuesta>3</respuesta>
+    </pregunta>
+
+    <pregunta tema="3" multiple="true">
+        <enunciado>¿Qué tipos de sockets existen?</enunciado>
+        <opcion>TCP.</opcion>
+        <opcion>UDP.</opcion>
+        <opcion>ICMP.</opcion>
+        <opcion>ARP.</opcion>
+        <respuesta>0</respuesta>
+        <respuesta>1</respuesta>
+    </pregunta>
+
+    <pregunta tema="3" multiple="false">
+        <enunciado>¿Qué función utiliza el cliente para conectarse a un socket servidor TCP?</enunciado>
+        <opcion>ExportSocket.</opcion>
+        <opcion>Socket.</opcion>
+        <opcion>Acept.</opcion>
+        <opcion>ServerSocket.</opcion>
+        <respuesta>1</respuesta>
+    </pregunta>
+
+    <pregunta tema="3" multiple="false">
+        <enunciado>Indica la capa se encarga de realizar el direccionamiento físico.</enunciado>
+        <opcion>Capa de aplicación.</opcion>
+        <opcion>Capa de transporte.</opcion>
+        <opcion>Capa host-red.</opcion>
+        <opcion>Capa de red.</opcion>
+        <respuesta>2</respuesta>
+    </pregunta>
+</preguntas>
