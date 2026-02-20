@@ -35,16 +35,23 @@ El programa lee archivos `.xml`. Para que tus tests funcionen, deben seguir este
 
 ## 🚀 Cómo empezar
 
-### Para Usuarios (Ejecución rápida)
+### Para Usuarios 
 
-1. Descarga el archivo `TestApp.jar` desde la sección de **Releases**.
+#### `.exe`
+1. Descarga el archivo `TestApp_Win.exe` desde la sección de **[Releases](https://github.com/little-shiny/TestAppXML/releases)**.
+2. Asegúrate de tener instalado **Java 17** o superior.
+3. Ejecuta el archivo con doble clic
+
+
+#### (`.jar`)
+
+1. Descarga el archivo `TestApp.jar` desde la sección de **[Releases](https://github.com/little-shiny/TestAppXML/releases)**.
 2. Asegúrate de tener instalado **Java 17** o superior.
 3. Ejecuta el archivo con doble clic o desde la consola:
 ```bash
 java -jar TestApp.jar
 
 ```
-
 
 4. Carga uno de los XML de ejemplo que encontrarás en la carpeta `/xml_test_examples`.
 
