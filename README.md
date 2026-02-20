@@ -3,7 +3,7 @@
 ## Actualmente --> **WIP**
 
 **Test App** es una herramienta educativa desarrollada en Java y JavaFX diseñada para ayudar a estudiantes a repasar 
-contenidos de exámenes de forma interactiva. Olvídate de leer PDFs estáticos: carga tus propios cuestionarios y entrena tu memoria con feedback inmediato.
+contenidos de exámenes de forma interactiva. 
 
 ## ✨ Características Principales
 
